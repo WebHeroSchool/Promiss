@@ -3,8 +3,7 @@ const content = document.querySelector('.content');
 const preloader = document.querySelector('.loadingio-spinner-spinner-zsfrfdav2ln');
 const url = window.location.toString();
 const nickFromUrl = (url) => {
-  let urlSplit = url.split('=');
-  let userName = urlSplit[1];
+  const userName = (url.split('='))[1];
   if (userName == undefined) {
     userName = 'akartynnik';
   }
@@ -22,10 +21,6 @@ const preloaderHide = () => {
   preloader.style.display = 'none';
   content.style.display = 'block';
 }
-
-setTimeout(preloaderHide, 2000);
-
-
 
 Promise.all([getDataUser, getDate])
   .then(([userData, nowDate]) => {
@@ -72,7 +67,7 @@ Promise.all([getDataUser, getDate])
         p.innerHTML = date;
         content.append(p);
       }
-
+      preloaderHide();
       nameAdd();
       avatarAdd();
       bioAdd();
