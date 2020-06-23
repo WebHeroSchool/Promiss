@@ -3,7 +3,7 @@ const content = document.querySelector('.content');
 const preloader = document.querySelector('.loadingio-spinner-spinner-zsfrfdav2ln');
 const url = window.location.toString();
 const nickFromUrl = (url) => {
-  const userName = (url.split('='))[1];
+  let userName = (url.split('='))[1];
   if (userName == undefined) {
     userName = 'akartynnik';
   }
@@ -21,6 +21,10 @@ const preloaderHide = () => {
   preloader.style.display = 'none';
   content.style.display = 'block';
 }
+
+// setTimeout(preloaderHide, 2000);
+
+
 
 Promise.all([getDataUser, getDate])
   .then(([userData, nowDate]) => {
